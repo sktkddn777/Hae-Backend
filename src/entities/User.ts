@@ -1,15 +1,16 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+export type Provider = 'naver' | 'kakao';
+@Entity('User')
 export class User {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  provider_id: string;
+  providerId!: string;
 
   @Column()
-  provider_data: string;
+  providerData: string;
 
   @Column()
   nickname: string;

@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import test from './routes/test';
+import login from './routes/login';
 
 export default () => {
   const app = Router();
-  test(app);
+  login(app);
   return app;
 };

@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: db.user,
   password: db.password,
   database: db.database,
-  synchronize: true, // 개발단계에서만 사용
+  // synchronize: true, // 개발단계에서만 사용
   logging: true,
   entities: [entitiesPath],
   subscribers: [],

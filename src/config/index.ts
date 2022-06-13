@@ -12,4 +12,12 @@ export default {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
   },
+
+  /* Naver */
+  naver: {
+    client: process.env.NAVER_CLIENT,
+    secret: process.env.NAVER_SECRET,
+    redirect: process.env.NAVER_REDIRECT,
+    state: process.env.NAVER_STATE,
+  },
 };
