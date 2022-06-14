@@ -1,10 +1,14 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-export type Provider = 'naver' | 'kakao';
+export type Provider = 'kakao' | 'naver';
+
 @Entity('User')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  providerType: Provider;
 
   @Column()
   providerId!: string;
@@ -12,10 +16,19 @@ export class User {
   @Column()
   providerData: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   nickname: string;
 
-  @Column()
+  @Column({
+    default: 1,
+  })
+  status: number;
+
+  @Column({
+    nullable: true,
+  })
   location: string;
 
   // Post와 관계 설정 필요

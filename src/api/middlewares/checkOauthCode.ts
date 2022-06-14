@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
+import { Provider } from '../../entities/User';
 import config from '../../config/index';
 import { asyncErrorWrapper } from '../../utils/asyncErrorWrapper';
 
 const { naver } = config;
 
-const getNaverUserInfoByOauth = async (provider: string, accessToken: string) => {
+const getNaverUserInfoByOauth = async (providerType: Provider, accessToken: string) => {
   const url = 'https://openapi.naver.com/v1/nid/me';
 
   let providerId;
@@ -24,7 +25,7 @@ const getNaverUserInfoByOauth = async (provider: string, accessToken: string) =>
   // eslint-disable-next-line prefer-const
   providerData = JSON.stringify(naverAccount);
 
-  return { providerId, providerData };
+  return { providerType, providerId, providerData };
 };
 
 const getNaverAccessToken = async (provider: string, authCode: string) => {
@@ -40,7 +41,7 @@ const getNaverAccessToken = async (provider: string, authCode: string) => {
 export const checkOauthCode = asyncErrorWrapper(async (req: Request, res: Response, next: NextFunction) => {
   // client로 부터 authcode 제공받음
   const { provider, authCode } = req.body;
-  if (!provider) throw new Error('not exists provider');
+  if (!(provider === 'kakao' || provider === 'naver')) throw new Error('wrong provider type');
   if (!authCode) throw new Error('not exists authCode');
 
   // accesstoken 발급

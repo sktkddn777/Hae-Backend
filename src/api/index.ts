@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import login from './routes/login';
+import auth from './routes/auth';
 
 export default () => {
   const app = Router();
-  login(app);
+  auth(app);
   return app;
 };
