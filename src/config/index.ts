@@ -20,4 +20,16 @@ export default {
     redirect: process.env.NAVER_REDIRECT,
     state: process.env.NAVER_STATE,
   },
+
+  /* JWT */
+  JWT: {
+    secret: process.env.JWT_SECRET!,
+    accessExpires: process.env.JWT_ACCESS_EXPIRES,
+    refreshExpires: process.env.JWT_REFRESH_EXPIRES,
+  },
+
+  /* cookie */
+  cookie: {
+    refreshTokenMaxAge: +process.env.COOKIE_REFRESH_MAX_AGE!,
+  },
 };

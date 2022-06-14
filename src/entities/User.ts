@@ -31,5 +31,10 @@ export class User {
   })
   location: string;
 
+  @Column({
+    default: 0,
+  })
+  isAdmin: number;
+
   // Post와 관계 설정 필요
 }
